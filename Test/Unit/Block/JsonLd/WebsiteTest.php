@@ -4,7 +4,7 @@
 
 namespace CommerceLeague\Seo\Test\Unit\Block\JsonLd;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
+use CommerceLeague\Seo\Helper\Config as ConfigHelper;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Store\Model\ScopeInterface;
@@ -27,9 +27,9 @@ class WebsiteTest extends TestCase
     protected $urlBuilder;
 
     /**
-     * @var MockObject|ScopeConfigInterface
+     * @var MockObject|ConfigHelper
      */
-    protected $scopeConfig;
+    protected $configHelper;
 
     /**
      * @var MockObject|WebsiteSchemaFactory
@@ -50,15 +50,11 @@ class WebsiteTest extends TestCase
     {
         $this->context = $this->createMock(Context::class);
         $this->urlBuilder = $this->createMock(UrlInterface::class);
-        $this->scopeConfig = $this->createMock(ScopeConfigInterface::class);
+        $this->configHelper = $this->createMock(ConfigHelper::class);
 
         $this->context->expects($this->any())
             ->method('getUrlBuilder')
             ->willReturn($this->urlBuilder);
-
-        $this->context->expects($this->any())
-            ->method('getScopeConfig')
-            ->willReturn($this->scopeConfig);
 
         $this->websiteSchemaFactory = $this->getMockBuilder(WebsiteSchemaFactory::class)
             ->disableOriginalConstructor()
@@ -70,32 +66,30 @@ class WebsiteTest extends TestCase
             ->setMethods(['url', 'name', 'toScript'])
             ->getMock();
 
+        $this->websiteSchemaFactory->expects($this->any())
+            ->method('create')
+            ->willReturn($this->websiteSchema);
+
         $this->website = new Website(
             $this->context,
-            $this->websiteSchemaFactory
+            $this->websiteSchemaFactory,
+            $this->configHelper
         );
     }
 
     public function testToHtml()
     {
         $baseUrl = 'http://example.com';
-        $storeName = 'a name';
+        $websiteName = 'the website name';
         $script = '<script type="application/ld+json">{}</script>';
-
-        $this->websiteSchemaFactory->expects($this->once())
-            ->method('create')
-            ->willReturn($this->websiteSchema);
 
         $this->urlBuilder->expects($this->once())
             ->method('getBaseUrl')
             ->willReturn($baseUrl);
 
-        $this->scopeConfig->expects($this->once())
-            ->method('getValue')
-            ->with(
-                'general/store_information/name',
-                ScopeInterface::SCOPE_STORE
-            )->willReturn($storeName);
+        $this->configHelper->expects($this->once())
+            ->method('getWebsiteName')
+            ->willReturn($websiteName);
 
         $this->websiteSchema->expects($this->once())
             ->method('url')
@@ -104,7 +98,7 @@ class WebsiteTest extends TestCase
 
         $this->websiteSchema->expects($this->once())
             ->method('name')
-            ->with($storeName)
+            ->with($websiteName)
             ->willReturnSelf();
 
         $this->websiteSchema->expects($this->once())

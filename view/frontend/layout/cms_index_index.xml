@@ -2,6 +2,7 @@
 	<body>
 		<referenceContainer name="before.body.end">
 			<block class="CommerceLeague\Seo\Block\JsonLd\Website" name="seo.json.ld.website" />
+			<block class="CommerceLeague\Seo\Block\JsonLd\Organization" name="seo.json.ld.organization" />
 		</referenceContainer>
 	</body>
 </page>

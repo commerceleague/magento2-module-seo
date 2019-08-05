@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<system>
+		<section id="seo" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+			<label>Search Engine Optimization</label>
+			<tab>general</tab>
+			<resource>CommerceLeague_Seo::seo</resource>
+			<group id="website_information" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Website Information</label>
+				<field id="name" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="0">
+					<label>Website Name</label>
+				</field>
+			</group>
+			<group id="business_information" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Business Information</label>
+				<field id="name" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="0">
+					<label>Business Name</label>
+				</field>
+				<field id="customer_service_phone" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="0">
+					<label>Customer Service Phone</label>
+				</field>
+			</group>
+			<group id="social_profile" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Social Profiles</label>
+				<field id="facebook" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="0">
+					<label>Facebook</label>
+				</field>
+				<field id="instagram" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="0">
+					<label>Instagram</label>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>
