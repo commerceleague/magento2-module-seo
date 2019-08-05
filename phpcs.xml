@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ruleset name="ruleset">
+	<file>Block</file>
+	<file>Service</file>
+	<exclude-pattern>Test/*</exclude-pattern>
+	<rule ref="Magento2" />
+</ruleset>

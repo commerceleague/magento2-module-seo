@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.orgasdf/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="head.additional">
+        <block class="CommerceLeague\Seo\Block\HrefLang" name="seo.href.lang" template="CommerceLeague_Seo::hreflang.phtml"/>
+    </referenceContainer>
+</page>

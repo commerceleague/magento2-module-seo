@@ -1,0 +1,15 @@
+<?php
+/**
+ * @var $block \CommerceLeague\Seo\Block\HrefLang
+ */
+?>
+
+<?php if ($default = $block->getDefault()): ?>
+    <link rel="alternate" href="<?= $default ?>" hreflang="x-default" />
+<?php endif; ?>
+
+<?php if ($alternates = $block->getAlternates()): ?>
+    <?php foreach ($alternates as $hrefLang => $url): ?>
+        <link rel="alternate" href="<?php echo $url ?>" hreflang="<?php echo $hrefLang ?>" />
+    <?php endforeach; ?>
+<?php endif; ?>

@@ -1,0 +1,22 @@
+<?php
+/**
+ * @var $block \CommerceLeague\Seo\Block\OpenGraphInterface
+ */
+?>
+
+<?php if ($ogTitle = $block->escapeHtmlAttr($block->stripTags($block->getOgTitle()))): ?>
+    <meta property="og:title" content="<?= $ogTitle ?>" />
+<?php endif; ?>
+
+<?php if ($ogDescription = $block->escapeHtmlAttr($block->stripTags($block->getOgDescription()))): ?>
+    <meta property="og:description" content="<?= $ogDescription ?>" />
+<?php endif; ?>
+
+<?php if ($ogUrl = $block->escapeUrl($block->getOgUrl())): ?>
+    <meta property="og:url" content="<?= $ogUrl ?>" />
+<?php endif; ?>
+
+<?php if ($ogImage = $block->escapeUrl($block->getOgImage())): ?>
+    <meta property="og:image" content="<?= $ogImage ?>" />
+<?php endif; ?>
+
