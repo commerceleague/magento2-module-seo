@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="CommerceLeague\Seo\Block\JsonLd\Product">
+		<arguments>
+			<argument name="productOfferGenerators" xsi:type="array">
+				<item name="grouped" xsi:type="object">CommerceLeague\Seo\Block\JsonLd\ProductOfferGenerator\GroupedProductProductOfferGenerator</item>
+			</argument>
+		</arguments>
+	</type>
+</config>
