@@ -3,4 +3,7 @@
     <referenceContainer name="head.additional">
         <block class="CommerceLeague\Seo\Block\HrefLang" name="seo.href.lang" template="CommerceLeague_Seo::hreflang.phtml"/>
     </referenceContainer>
+    <referenceContainer name="before.body.end">
+        <block class="CommerceLeague\Seo\Block\JsonLd\Organization" name="seo.json.ld.organization" />
+    </referenceContainer>
 </page>
